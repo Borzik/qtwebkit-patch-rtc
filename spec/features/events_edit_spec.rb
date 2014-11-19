@@ -7,7 +7,7 @@ feature 'Events edit path', js: true do
   it 'should create event', js: true do
     visit event_path(@event)
     expect(page.body).to have_text('event1')
-    sleep 2
+    sleep 5
     visit events_path
     expect(page.body).to have_text('Changed by AJAX')
   end
