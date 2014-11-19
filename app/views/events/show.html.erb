@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Lat:</strong>
+  <%= @event.lat %>
+</p>
+
+<p>
+  <strong>Lon:</strong>
+  <%= @event.lon %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @event.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @event.description %>
+</p>
+<%= javascript_tag "var AUTH_TOKEN = '#{form_authenticity_token}';" if protect_against_forgery? %>
+<script>
+var xhr = new XMLHttpRequest();
+var params = 'event[title]=Changed%20with%20AJAX';
+xhr.open("PATCH", '<%= event_path(@event) %>.js', true)
+xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
+xhr.send(params);
+</script>
+
+<%= link_to 'Edit', edit_event_path(@event) %> |
+<%= link_to 'Back', events_path %>
